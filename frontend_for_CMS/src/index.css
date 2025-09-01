@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply font-mulish bg-dark-bg text-dark-text;
+}
+
+h1 {
+  @apply text-h1 font-bold;
+}
+
+h2 {
+  @apply text-h2 font-bold;
+}
+
+h3 {
+  @apply text-h3 font-bold;
+}
+
+h4 {
+  @apply text-h4 font-medium;
+}
+
+h5 {
+  @apply text-h5 font-medium;
+}
+
+h6 {
+  @apply text-h6 font-medium;
+}
+
+/* Components styling based on design system */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded hover:bg-primary-600 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-4 py-2 rounded hover:bg-secondary-600 transition-colors;
+  }
+
+  .btn-tertiary {
+    @apply bg-tertiary text-white px-4 py-2 rounded hover:bg-tertiary-600 transition-colors;
+  }
+
+  .card {
+    @apply bg-dark-card border border-dark-border rounded-lg shadow-sm p-4;
+  }
+
+  /* Dark sidebar styling */
+  .sidebar {
+    @apply bg-secondary-800 text-white;
+  }
+
+  .sidebar-link {
+    @apply flex items-center p-3 rounded-md transition;
+  }
+
+  .sidebar-link.active {
+    @apply bg-primary;
+  }
+  
+  .sidebar-link:not(.active) {
+    @apply hover:bg-secondary-700;
+  }
+
+  .input {
+    @apply bg-dark-card border border-dark-border rounded px-3 py-2 text-dark-text;
+  }
+
+  .select {
+    @apply bg-dark-card border border-dark-border rounded px-3 py-2 text-dark-text;
+  }
+
+  .label {
+    @apply block text-dark-textSecondary font-medium mb-1;
+  }
+
+  .table {
+    @apply w-full border-collapse;
+  }
+
+  .table th {
+    @apply bg-secondary-800 text-left py-3 px-4 text-dark-text;
+  }
+
+  .table td {
+    @apply border-t border-dark-border py-3 px-4;
+  }
+
+  .table tr {
+    @apply hover:bg-secondary-900;
+  }
+}
+
+/* Thêm vào file CSS toàn cục */
+html {
+  font-size: 80%; /* Mặc định là 100% = 16px, 80% = ~13px */
+}

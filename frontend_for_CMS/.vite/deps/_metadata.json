@@ -1,0 +1,64 @@
+{
+  "hash": "cd18c760",
+  "configHash": "6cd6e34c",
+  "lockfileHash": "b9af441c",
+  "browserHash": "f3e39b84",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "9878762c",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "582737ca",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "4d077656",
+      "needsInterop": false
+    },
+    "@schedule-x/react": {
+      "src": "../../node_modules/@schedule-x/react/dist/index.js",
+      "file": "@schedule-x_react.js",
+      "fileHash": "01311b45",
+      "needsInterop": false
+    },
+    "@schedule-x/calendar": {
+      "src": "../../node_modules/@schedule-x/calendar/dist/core.js",
+      "file": "@schedule-x_calendar.js",
+      "fileHash": "831b0eec",
+      "needsInterop": false
+    },
+    "@schedule-x/events-service": {
+      "src": "../../node_modules/@schedule-x/events-service/dist/core.js",
+      "file": "@schedule-x_events-service.js",
+      "fileHash": "219fe24a",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "2c77354d",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-TKHB4QMX": {
+      "file": "chunk-TKHB4QMX.js"
+    },
+    "chunk-YLDSBLSF": {
+      "file": "chunk-YLDSBLSF.js"
+    },
+    "chunk-FWDRCBYH": {
+      "file": "chunk-FWDRCBYH.js"
+    },
+    "chunk-DC5AMYBS": {
+      "file": "chunk-DC5AMYBS.js"
+    }
+  }
+}

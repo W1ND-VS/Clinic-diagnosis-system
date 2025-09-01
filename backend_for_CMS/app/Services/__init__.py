@@ -1,0 +1,12 @@
+from .auth_service import AuthService  # noqa: F401
+from .BacSi_service import BacSiService  # noqa: F401
+from .BenhNhan_service import BenhNhanService  # noqa: F401
+from .TiepTan_service import TiepTanService  # noqa: F401
+from .TaiNguyen_service import TaiNguyenService  # noqa: F401
+from .DichVu_service import DichVuService  # noqa: F401
+from .TrieuChung_service import TrieuChungService  # noqa: F401 
+from .PhieuHen_service import PhieuHenService  # noqa: F401
+from .ChuyenKhoa_service import ChuyenKhoaService  # noqa: F401
+from .PhieuKham_service import PhieuKhamService  # noqa: F401
+from .KetQua_service import KetQuaService  # noqa: F401
+from .Thuoc_service import ThuocService  # noqa: F401

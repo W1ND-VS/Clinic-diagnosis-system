@@ -1,0 +1,566 @@
+/* Calendar background */
+.fc {
+  --fc-page-bg-color: #252833 ; 
+  --fc-border-color: #394152;
+  --fc-today-bg-color: rgba(31, 148, 202, 0.15);
+  --fc-neutral-bg-color: #1a1c24;
+  --fc-list-event-hover-bg-color: #394152;  
+}
+
+
+/* Text colors */
+.fc {
+  --fc-event-text-color: #f7fafc;
+  --fc-text-color: #f7fafc;
+  --fc-neutral-text-color: #a0aec0;
+}
+
+/* Button colors */
+.fc .fc-button {
+  --fc-button-bg-color: #394152;
+  --fc-button-border-color: #394152;
+  --fc-button-hover-bg-color: #1f94ca;
+  --fc-button-hover-border-color: #1f94ca;
+  --fc-button-active-bg-color: #1f94ca;
+  --fc-button-active-border-color: #1f94ca;
+  --fc-button-text-color: #f7fafc;
+}
+
+/* Make the cells darker */
+.fc .fc-timegrid-slot {
+  background-color: #1a1c24;
+  border-color: #394152;
+}
+
+/* Header styling */
+.fc .fc-col-header-cell {
+  background-color: #394152;
+  color: #f7fafc;
+}
+
+.fc .fc-timegrid-axis {
+  background-color: #394152;
+  color: #f7fafc;
+}
+
+/* Resource header cells (doctor names) */
+.fc .fc-timeline-slot.fc-resource-group,
+.fc .fc-resource-timeline .fc-resource-group,
+.fc .fc-resource-timeline .fc-datagrid-cell {
+  background-color: #394152;
+  color: #f7fafc;
+}
+
+/* Event styling */
+.fc-event {
+  border-radius: 4px;
+  border: 1px solid var(--fc-border-color);
+}
+
+/* Custom event colors - keep yours but add border */
+.fc-event[style*="background:#d2e7ff"] {
+  color: #1a1c24 !important;
+  border: 1px solid #1f94ca;
+}
+
+.fc-event[style*="background:#41359b"] {
+  color: #f7fafc !important;
+  border: 1px solid #6e7a8c;
+}
+
+/* Now indicator */
+.fc .fc-timegrid-now-indicator-line {
+  background-color: #e53e3e;
+  border-color: #e53e3e;
+}
+
+.fc .fc-timegrid-now-indicator-arrow {
+  border-color: #e53e3e;
+  color: #e53e3e;
+}
+
+/* Time slots hover for selection */
+.fc .fc-timegrid-col:hover {
+  background-color: rgba(31, 148, 202, 0.1);
+}
+
+/* Selected area styling */
+.fc-highlight {
+  background-color: rgba(31, 148, 202, 0.3) !important;
+}
+
+/* Eliminate extra white backgrounds */
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid-section > td,
+.fc .fc-timegrid-body,
+.fc .fc-timegrid-slots,
+.fc-timegrid-axis,
+.fc-timegrid-slot {
+  background-color: #252833;
+}
+
+/* Resource timeline adjustments */
+.fc-resource-timeline .fc-cell-shaded,
+.fc-timeline .fc-cell-shaded {
+  background-color: #1a1c24;
+}
+
+/* Cell border colors */
+.fc-theme-standard td, 
+.fc-theme-standard th {
+  border-color: #394152;
+}
+
+/* Custom styling for DatePicker popup */
+.react-datepicker {
+  background-color: #252833 !important;
+  border-color: #394152 !important;
+  color: #f7fafc !important;
+}
+
+.react-datepicker__header {
+  background-color: #1a1c24 !important;
+  border-color: #394152 !important;
+}
+
+.react-datepicker__day-name, 
+.react-datepicker__day, 
+.react-datepicker__current-month {
+  color: #f7fafc !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #1f94ca !important;
+  color: white !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: #1f94ca !important;
+  color: white !important;
+}
+
+/* Tùy chỉnh màu sắc cho header các ngày */
+.fc .fc-col-header-cell-cushion {
+  padding: 8px 4px;
+  color: #1a2340;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Tùy chỉnh các ô thời gian */
+.fc .fc-timegrid-slot {
+  height: 50px; /* Tăng từ 40px lên 60px */
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Tùy chỉnh sự kiện */
+.fc .fc-event {
+  border-radius: 0.75rem;
+  border: none;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 4px 0 #e3e7ee;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.fc .fc-event:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 10;
+}
+
+/* Đường chỉ báo giờ hiện tại */
+.fc .fc-timegrid-now-indicator-line {
+  border-color: #f56565;
+  border-width: 2px;
+}
+
+.fc .fc-timegrid-now-indicator-arrow {
+  border-color: #f56565;
+  border-width: 5px;
+}
+
+/* Làm đẹp điểm đánh dấu thời gian */
+.fc .fc-timegrid-slot-label {
+  color: #718096;
+  font-size: 0.85rem;
+}
+
+/* Tùy chỉnh màu nền cho các ngày cuối tuần */
+.fc .fc-day-sat, .fc .fc-day-sun {
+  background-color: #f9fafb;
+}
+
+/* Tùy chỉnh marker cho ngày hôm nay */
+.fc .fc-day-today {
+  background-color: inherit !important;
+  color: #ff9800 !important;
+}
+
+/* Tắt nền mặc định cho ngày hiện tại */
+.fc .fc-day-today {
+  background-color: inherit !important;
+}
+
+/* Tùy chỉnh style cho tiêu đề ngày hiện tại */
+.fc .fc-header-today {
+  background-color: #afcafa !important;
+  color: white !important;
+  border-radius: 8px 8px 8px 8px !important;
+  font-weight: bold !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
+  transform: scale(0.95) !important;
+}
+
+/* Đảm bảo popup của DatePicker nổi trên calendar */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .fc .fc-toolbar.fc-header-toolbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.fc {
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 2px 16px 0 #e3e7ee00;
+  padding: 0.5rem;
+}
+
+/* Loại bỏ tất cả các đường kẻ dọc */
+.fc-theme-standard td,
+.fc-theme-standard th,
+.fc-scrollgrid-section,
+.fc-scrollgrid-section > td,
+.fc-col-header-cell,
+.fc-timegrid-divider,
+.fc-timegrid-cols,
+.fc-timegrid-col,
+.fc-timegrid-col-frame {
+  border-right: none !important;
+  border-left: none !important;
+}
+
+/* Loại bỏ đường kẻ viền ngoài */
+.fc-theme-standard .fc-scrollgrid {
+  border-right-width: 0 !important;
+  border-left-width: 0 !important;
+}
+
+/* Giữ lại đường kẻ ngang */
+.fc-theme-standard tr {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Điều chỉnh border của các ô giờ */
+.fc-timegrid-slot {
+  border-top: 1px solid #eee !important;
+  border-right: none !important;
+  border-left: none !important;
+}
+
+/* Đảm bảo !important có hiệu lực cao nhất */
+.fc .fc-scrollgrid-section-body table,
+.fc .fc-scrollgrid-section-footer table {
+  border-right: none !important;
+  border-bottom-width: 0 !important;
+}
+
+/* Loại bỏ border giữa header và body */
+.fc .fc-scrollgrid-section-sticky > * {
+  border-right-width: 0 !important;
+}
+
+/* Add to calendar-custom.css */
+.doctor-resource-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  background-color: #e6f0ff;
+}
+
+/* Thêm đường ngăn cách giữa các cột bác sĩ */
+.fc-resource-timeline .fc-resource-group,
+.fc-resource-timeline .fc-resource-lane,
+.fc-resource-timeline .fc-resource-cell,
+.fc-resource-timegrid .fc-resource-cell,
+.fc-resource-timegrid .fc-datagrid-cell,
+.fc-resource-timegrid .fc-datagrid-cell-frame,
+.fc-resource-timegrid .fc-timegrid-col,
+.fc-resource-timegrid .fc-timegrid-col-frame,
+.fc-resource-timegrid td.fc-timegrid-col {
+  border-right: 1px solid #020202 !important;
+}
+
+/* Áp dụng style đặc biệt cho header của cột bác sĩ */
+.doctor-resource-header {
+  font-weight: 500;
+  padding: 8px;
+  background-color: #f9fafb;
+  border-right: 1px solid #bbccdd !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Đảm bảo cột cuối cùng cũng có border */
+.fc-resource-timegrid .fc-col-header-cell:last-child,
+.fc-resource-timegrid .fc-timegrid-col:last-child {
+  border-right: 1px solid #ddd !important;
+}
+
+/* Giữ nguyên border trái của cột đầu tiên */
+.fc-resource-timegrid .fc-col-header-cell:first-child,
+.fc-resource-timegrid .fc-timegrid-col:first-child {
+  border-left: 1px solid #ddd !important;
+}
+
+/* Loại bỏ đường kẻ dọc chỉ trong các chế độ xem không phải resource */
+.fc-theme-standard:not(.fc-resource-timeline):not(.fc-resource-timegrid) td,
+.fc-theme-standard:not(.fc-resource-timeline):not(.fc-resource-timegrid) th,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-scrollgrid-section,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-scrollgrid-section > td,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-col-header-cell,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-timegrid-divider,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-timegrid-cols,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-timegrid-col,
+.fc-timegrid:not(.fc-resource-timegrid) .fc-timegrid-col-frame {
+  border-right: none !important;
+  border-left: none !important;
+}
+
+/* Loại bỏ đường kẻ viền ngoài chỉ trong các chế độ xem không phải resource */
+.fc-theme-standard:not(.fc-resource-timeline):not(.fc-resource-timegrid) .fc-scrollgrid {
+  border-right-width: 0 !important;
+  border-left-width: 0 !important;
+}
+
+/* ĐƯỜNG KẺ CHO RESOURCE VIEW (CHẾ ĐỘ XEM THEO BÁC SĨ) */
+/* Thêm đường ngăn cách giữa các cột bác sĩ */
+.fc-resource-timegrid .fc-resource-group,
+.fc-resource-timegrid .fc-resource-lane,
+.fc-resource-timegrid .fc-resource-cell,
+.fc-resource-timegrid .fc-datagrid-cell,
+.fc-resource-timegrid .fc-datagrid-cell-frame,
+.fc-resource-timegrid .fc-timegrid-col,
+.fc-resource-timegrid .fc-timegrid-col-frame,
+.fc-resource-timegrid td.fc-timegrid-col {
+  border-right: 1px solid #e0e0e0 !important;
+}
+
+/* Áp dụng style đặc biệt cho header của cột bác sĩ */
+.fc-resource-timegrid .fc-datagrid-cell-cushion,
+.doctor-resource-header {
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  background-color: #e6f0ff;
+  border-bottom: 1px solid #bbccdd !important;
+}
+
+/* Thêm viền cho khung resource view */
+.fc-resource-timegrid .fc-scrollgrid {
+  border: 1px solid #ddd !important;
+}
+
+/* Viền phân cách giữa các cột rõ ràng hơn */
+.fc-resource-timegrid .fc-timegrid-body .fc-timegrid-col-bg {
+  border-right: 1px solid #e0e0e0 !important;
+}
+
+/* CSS đơn giản và trực tiếp hơn */
+.fc-resource-timegrid .fc-col-header-cell,
+.fc-resource-timegrid .fc-timegrid-col {
+  border-right: 2px solid #2c3e50 !important; /* Đường kẻ đậm và màu đậm hơn */
+}
+
+.fc-resource-timegrid .fc-datagrid-cell {
+  border: 2px solid #2c3e50 !important;
+  background-color: #e6f0ff !important;
+}
+
+/* Áp dụng trực tiếp cho tất cả các phần tử trong resource view */
+.fc-resource-timegrid * {
+  border-color: #2c3e50 !important;
+}
+
+/* Đặt z-index cao cho đảm bảo nó hiển thị */
+.fc-resource-timegrid .fc-col-header,
+.fc-resource-timegrid .fc-datagrid-cell {
+  z-index: 5 !important;
+  position: relative !important;
+}
+
+/* Đảm bảo nội dung sự kiện nằm gọn trong khu vực */
+.fc-event-main {
+  overflow: hidden !important;
+}
+
+.fc-event-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Giảm padding để tận dụng không gian */
+.fc .fc-timegrid-event {
+  padding: 0px ;
+}
+
+/* Đảm bảo các sự kiện nhỏ vẫn hiển thị tốt */
+.fc .fc-timegrid-event-short .fc-event-main {
+  padding: 0px !important;
+}
+
+.fc .fc-timegrid-event .fc-event-main {
+  padding: 0px !important;
+}
+
+/* Màu nền xen kẽ cho các cột bác sĩ */
+/* Cột lẻ có màu nền xám nhạt */
+.fc-resourceTimeGridDay-view .fc-timegrid-cols .fc-day:nth-child(odd) {
+  background-color: rgba(245, 245, 245, 1) !important;
+}
+
+/* Cột chẵn có màu nền trắng */
+.fc-resourceTimeGridDay-view .fc-timegrid-cols .fc-day:nth-child(even) {
+  background-color: white !important;
+}
+
+/* Áp dụng trực tiếp cho các cột */
+.fc-resource-timegrid .fc-timegrid-col:nth-child(odd) {
+  background-color: rgb(247, 247, 247) !important;
+}
+
+.fc-resource-timegrid .fc-timegrid-col:nth-child(even) {
+  background-color: white !important;
+}
+
+/* Màu nền cho phần nội dung của các cột */
+.fc-resource-timegrid .fc-timegrid-col-bg:nth-child(odd) {
+  background-color: rgba(245, 245, 245, 1) !important;
+}
+
+.fc-resource-timegrid .fc-timegrid-col-bg:nth-child(even) {
+  background-color: white !important;
+}
+
+/* Thêm viền phân cách giữa các cột */
+.fc-resource-timegrid .fc-timegrid-col,
+.fc-resource-timegrid .fc-timegrid-col-frame {
+  border-right: 1px solid #e0e0e0 !important;
+}
+
+/* Ghi đè toàn bộ background với !important */
+.fc,
+.fc-scrollgrid,
+.fc-theme-standard td,
+.fc-theme-standard th,
+.fc-scrollgrid-section-header,
+.fc-scrollgrid-section-body,
+.fc-scrollgrid-section-footer,
+.fc-datagrid-cell,
+.fc-timeline-header,
+.fc-timegrid-body,
+.fc-timegrid-slots,
+.fc-timegrid-slots table {
+  background-color: #252833 !important;
+}
+
+/* Đảm bảo background cho resource header (tên bác sĩ) */
+.fc-timegrid-axis,
+.fc .fc-datagrid-cell,
+.fc-resource-timeline th,
+.fc-resource-timeline .fc-datagrid-header {
+  background-color: #394152 !important;
+  color: #f7fafc !important;
+}
+
+/* Màu nền cho time slots */
+.fc-timegrid-slot,
+.fc-timegrid-slot-lane {
+  background-color: #252833 !important;
+  border-color: #394152 !important;
+}
+
+/* Body cells background fix */
+.fc-timegrid-col,
+.fc-timegrid-col-frame,
+.fc-scrollgrid-sync-inner {
+  background-color: #252833 !important;
+}
+
+/* Remove all white backgrounds */
+.fc-scrollgrid-sync-table,
+.fc-scrollgrid-section > * {
+  background-color: #252833 !important;
+}
+
+/* Fix event colors */
+.fc-event-main {
+  background-color: inherit !important;
+}
+
+/* Ensure all text is visible */
+.fc {
+  color: #f7fafc !important;
+}
+
+/* Fix for datepicker */
+.react-datepicker {
+  background-color: #252833 !important;
+  border-color: #394152 !important;
+}
+
+.react-datepicker__header {
+  background-color: #394152 !important;
+  color: #f7fafc !important;
+  border-bottom-color: #394152 !important;
+}
+
+.react-datepicker__day {
+  color: #f7fafc !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: #1f94ca !important;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__current-month {
+  color: #f7fafc !important;
+}
+
+/* Styling for calendar events in dark mode */
+.fc-event {
+  border-width: 2px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Hover effect for events */
+.fc-event:hover {
+  filter: brightness(1.2) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Active events - những lịch đã đến khám */
+.fc-event[style*="background:#2c4975"] {
+  background-image: linear-gradient(to bottom, #3a5f92, #2c4975) !important;
+}
+
+/* Pending events - những lịch chưa đến khám */
+.fc-event[style*="background:#183657"] {
+  background-image: linear-gradient(to bottom, #234877, #183657) !important;
+}
