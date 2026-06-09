@@ -1,0 +1,17 @@
+backend_for_CMS/env/
+backend_for_CMS/__pycache__/
+backend_for_CMS/**/*.pyc
+backend_for_CMS/.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node / React
+node_modules/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
