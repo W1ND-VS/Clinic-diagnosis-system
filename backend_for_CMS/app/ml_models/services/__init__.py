@@ -41,7 +41,7 @@ __all__ = [
     "HeartDiseasePredictor",
     "heart_disease_predictor",
     "HypertensionPredictor",
-    "hypertension_predictor"
+    "hypertension_predictor",
 ]
 
 
@@ -53,22 +53,27 @@ def get_available_services():
             "instance": "diabetes_predictor",
             "description": "Predicts diabetes risk based on patient data",
             "required_fields": ["age", "gender"],
-            "optional_fields": ["bmi", "blood_glucose_level", "HbA1c_level"]
+            "optional_fields": ["bmi", "blood_glucose_level", "HbA1c_level"],
         },
         "heart_disease_prediction": {
-            "class": "HeartDiseasePredictor", 
+            "class": "HeartDiseasePredictor",
             "instance": "heart_disease_predictor",
             "description": "Predicts heart disease risk based on clinical data",
             "required_fields": ["age", "sex"],
-            "optional_fields": ["chest_pain_type", "blood_pressure", "cholesterol"]
+            "optional_fields": ["chest_pain_type", "blood_pressure", "cholesterol"],
         },
         "hypertension_prediction": {
             "class": "HypertensionPredictor",
-            "instance": "hypertension_predictor", 
+            "instance": "hypertension_predictor",
             "description": "Predicts hypertension risk based on blood pressure and lifestyle factors",
             "required_fields": ["age", "systolic_bp"],
-            "optional_fields": ["diastolic_bp", "bmi", "smoking_history", "family_history"]
-        }
+            "optional_fields": [
+                "diastolic_bp",
+                "bmi",
+                "smoking_history",
+                "family_history",
+            ],
+        },
     }
 
 

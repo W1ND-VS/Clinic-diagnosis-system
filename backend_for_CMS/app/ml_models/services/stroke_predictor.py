@@ -22,7 +22,7 @@ class StrokePredictor:
         self.scaler = None
         self._load_model()
 
-    def _load_model(self):  
+    def _load_model(self):
         """Load stroke prediction model và scaler"""
         try:
             self.model = model_loader.load_model("random_forest_stroke_model_v4.pkl")
@@ -39,11 +39,22 @@ class StrokePredictor:
         Tiền xử lý dữ liệu đầu vào: mã hóa & chuẩn hóa đúng như pipeline train.
         """
         try:
-            Gender_encode = {'Male':0, 'Female':1}
-            ever_married_encode = {'Yes':0, 'No':1}
-            work_type_encode = {'Private':0, 'Self-employed':1, 'children':2, 'Govt_job':3, 'Never_worked':4}
-            Resident_encode = {'Urban':0, 'Rural':1}
-            smoking_encode = {'never smoked':0, 'formerly smoked':1, 'smokes':2, 'Unknown':3}
+            Gender_encode = {"Male": 0, "Female": 1}
+            ever_married_encode = {"Yes": 0, "No": 1}
+            work_type_encode = {
+                "Private": 0,
+                "Self-employed": 1,
+                "children": 2,
+                "Govt_job": 3,
+                "Never_worked": 4,
+            }
+            Resident_encode = {"Urban": 0, "Rural": 1}
+            smoking_encode = {
+                "never smoked": 0,
+                "formerly smoked": 1,
+                "smokes": 2,
+                "Unknown": 3,
+            }
 
             # Chuyển dict thành DataFrame 1 dòng
             df = pd.DataFrame([form_data])

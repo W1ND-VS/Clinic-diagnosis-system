@@ -1844,8 +1844,7 @@ class PhieuKhamService:
             self.db.session.rollback()
             print(f"Lỗi khi thanh toán phiếu khám: {str(e)}")
             return False
-        
-        
+
     def get_all_paid_examinations(self) -> list:
         """
         Lấy tất cả phiếu khám có trạng thái 'Đã thanh toán'
@@ -1858,8 +1857,7 @@ class PhieuKhamService:
                 .all()
             )
             return [
-                pk.to_dict() if hasattr(pk, "to_dict") else pk
-                for pk in phieu_khams
+                pk.to_dict() if hasattr(pk, "to_dict") else pk for pk in phieu_khams
             ]
         except Exception as e:
             print(f"Lỗi khi lấy phiếu khám đã thanh toán: {str(e)}")
