@@ -6,7 +6,6 @@ from datetime import date
 
 from app.ml_models.services import hypertension_predictor
 from sqlalchemy import func
-from typeguard import value
 from app.Model import PhieuKham, PhieuHen, PhieuCDDVYT, ToaThuoc, BacSi, CaLamViec
 from app.Services.BacSi_service import BacSiService
 from app.Services.TrieuChung_service import TrieuChungService
