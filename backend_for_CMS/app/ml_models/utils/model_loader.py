@@ -35,9 +35,7 @@ class ModelLoader:
             return model
             
         except Exception as e:
-            print(f"❌ Lỗi khi load model {model_name}: {str(e)}")
-            import traceback
-            print(traceback.format_exc())
+            print(f"⚠️ Model '{model_name}' unavailable, using fallback: {e}")
             return None
 
 # Singleton instance

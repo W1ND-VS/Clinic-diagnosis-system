@@ -17,60 +17,6 @@ try:
 
     print("✅ Prediction services loaded")
 
-    # Verify services are working
-    services_status = {}
-
-    # Test diabetes predictor
-    try:
-        test_result = diabetes_predictor.predict_diabetes({"age": 50, "gender": "Male"})
-        services_status["diabetes"] = {
-            "available": True,
-            "model_type": test_result.get("model_type", "unknown"),
-            "working": test_result.get("prediction") is not None,
-        }
-    except Exception as e:
-        services_status["diabetes"] = {
-            "available": False,
-            "error": str(e),
-            "working": False,
-        }
-
-    # Test heart disease predictor
-    try:
-        test_result = heart_disease_predictor.predict_heart_disease(
-            {"age": 50, "sex": 1}
-        )
-        services_status["heart_disease"] = {
-            "available": True,
-            "model_type": test_result.get("model_info", {}).get(
-                "model_type", "unknown"
-            ),
-            "working": test_result.get("prediction") is not None,
-        }
-    except Exception as e:
-        services_status["heart_disease"] = {
-            "available": False,
-            "error": str(e),
-            "working": False,
-        }
-
-    # Test hypertension predictor
-    try:
-        test_result = hypertension_predictor.predict_hypertension({"age": 50, "systolic_bp": 140})
-        services_status["hypertension"] = {
-            "available": True,
-            "model_type": test_result.get("model_info", {}).get("model_type", "unknown"),
-            "working": test_result.get("prediction") is not None
-        }
-    except Exception as e:
-        services_status["hypertension"] = {
-            "available": False,
-            "error": str(e),
-            "working": False
-        }
-
-    print(f"📊 Services status: {services_status}")
-
 except ImportError as e:
     print(f"⚠️ Error importing prediction services: {str(e)}")
 
