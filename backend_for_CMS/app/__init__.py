@@ -26,7 +26,7 @@ from flask_cors import CORS
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
-    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "http://localhost:5174","http://localhost:5175","http://localhost:5176","http://localhost:5177"]}})
+    CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173", "http://localhost:5174","http://localhost:5175","http://localhost:5176","https://clinic-diagnosis-system.vercel.app"]}})
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
