@@ -406,7 +406,7 @@ const DoctorMedicalSchedule = () => {
 
                                                     {record.status === 'completed' && (
                                                         <button
-                                                            onClick={() => window.open(`http://127.0.0.1:5000/api/phieukham/print/${record.pk_ma}`, '_blank')}
+                                                            onClick={() => window.open(`https://clinic-diagnosis-system-production.up.railway.app/api/phieukham/print/${record.pk_ma}`, '_blank')}
                                                             className="text-dark-textSecondary hover:text-dark-text"
                                                             title="In phiếu khám"
                                                         >

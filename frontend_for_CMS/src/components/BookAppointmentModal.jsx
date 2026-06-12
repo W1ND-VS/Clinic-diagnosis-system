@@ -4,6 +4,8 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const API_BASE_URL = "https://clinic-diagnosis-system-production.up.railway.app/api";
+
 const BookAppointmentModal = ({ isOpen, onClose, onSubmit, selectedTimeSlot }) => {
     const [medicalForm, setMedicalForm] = useState({
         ph_ngayhen: "",
@@ -35,14 +37,14 @@ const BookAppointmentModal = ({ isOpen, onClose, onSubmit, selectedTimeSlot }) =
             try {
                 const token = localStorage.getItem("access_token");
                 // Fetch patients data
-                const patientsRes = await axios.get("http://127.0.0.1:5000/api/benhnhan/getall");
+                const patientsRes = await axios.get(`${API_BASE_URL}/benhnhan/getall`);
                 setAllPatients(patientsRes.data.data || []);
                 console.log("All patients:", patientsRes.data.data);
                 // Fetch doctors data
-                const doctorsRes = await axios.get("http://127.0.0.1:5000/api/bacsi/getall");
+                const doctorsRes = await axios.get(`${API_BASE_URL}/bacsi/getall`);
 
                 // Fetch symptoms data
-                const symptomsRes = await axios.get("http://127.0.0.1:5000/api/trieuchung/getall");
+                const symptomsRes = await axios.get(`${API_BASE_URL}/trieuchung/getall`);
                 // Kiểm tra xem dữ liệu có tồn tại không
                 if (!patientsRes.data) {
                     throw new Error("Dữ liệu không hợp lệ");
@@ -157,7 +159,7 @@ const BookAppointmentModal = ({ isOpen, onClose, onSubmit, selectedTimeSlot }) =
         console.log("New patient data:", newPatient);
         try {
             const response = await axios.post(
-                "http://127.0.0.1:5000/api/benhnhan/create",
+                `${API_BASE_URL}/benhnhan/create`,
                 newPatient
             );
             // Log the new patient data for debugging

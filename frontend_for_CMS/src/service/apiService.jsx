@@ -1,6 +1,6 @@
 import axios from "axios";
 // URL backend API (chỉnh lại nếu Flask chạy ở cổng khác)
-const API_BASE_URL = "http://127.0.0.1:5000/api";
+const API_BASE_URL = "https://clinic-diagnosis-system-production.up.railway.app/api";
 
 // Tạo instance Axios
 const api = axios.create({

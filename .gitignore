@@ -1,4 +1,4 @@
-backend_for_CMS/env/
+backend_for_CMS/.env/
 backend_for_CMS/__pycache__/
 backend_for_CMS/**/*.pyc
 backend_for_CMS/.env
