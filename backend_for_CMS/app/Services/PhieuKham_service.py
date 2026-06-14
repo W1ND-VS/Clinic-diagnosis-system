@@ -579,16 +579,12 @@ class PhieuKhamService:
                 raise ValueError(f"Phiếu hẹn với mã {ph_ma} không tồn tại")
 
             # Dùng múi giờ VN để tránh lệch UTC trên production
-            # now_vn = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh"))
-            # ngay_hen = now_vn.date()
-            # gio_hien_tai = now_vn.time().replace(tzinfo=None)
-            # print(f"[DEBUG] Giờ hiện tại: {gio_hien_tai}")
-            
-            
-            
-            ngay_hen = date()
-            gio_hien_tai = datetime.now().time()
+            now_vn = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh"))
+            ngay_hen = now_vn.date()
+            gio_hien_tai = now_vn.time().replace(tzinfo=None)
             print(f"[DEBUG] Giờ hiện tại: {gio_hien_tai}")
+            
+
             # Lấy nv_ma từ phiếu hẹn (ưu tiên lấy từ phiếu hẹn)
             nv_ma_hen = phieu_hen.nv_ma or nv_ma
 
