@@ -46,7 +46,7 @@ const DoctorMedicalSchedule = () => {
         if (doctorId) {
             fetchMedicalRecords();
         }
-    }, [doctorId,selectedDate, status, currentPage]);
+    }, [doctorId, selectedDate, status, currentPage]);
 
 
     console.log("Doctor ID:", doctorId);

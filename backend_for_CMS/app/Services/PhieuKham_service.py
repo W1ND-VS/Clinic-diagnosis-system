@@ -595,7 +595,7 @@ class PhieuKhamService:
 
             if not schedules or len(schedules) == 0:
                 raise ValueError(
-                    "Hiện tại ngoài giờ làm việc của bác sĩ đã hẹn, không thể lập phiếu khám."
+                    f"Hiện tại ngoài giờ làm việc của bác sĩ đã hẹn, không thể lập phiếu khám. {gio_hien_tai}"
                 )
 
             # Kiểm tra giờ hiện tại có nằm trong ca làm việc nào không
