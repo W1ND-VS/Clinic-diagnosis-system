@@ -3,6 +3,7 @@ import joblib
 import pandas as pd
 from datetime import datetime
 from datetime import date
+from zoneinfo import ZoneInfo
 
 from app.ml_models.services import hypertension_predictor
 from sqlalchemy import func
@@ -577,9 +578,10 @@ class PhieuKhamService:
             if not phieu_hen:
                 raise ValueError(f"Phiếu hẹn với mã {ph_ma} không tồn tại")
 
-            # Lấy ngày hiện tại và giờ hiện tại
-            ngay_hen = date.today()
-            gio_hien_tai = datetime.now().time()
+            # Dùng múi giờ VN để tránh lệch UTC trên production
+            now_vn = datetime.now(ZoneInfo("Asia/Ho_Chi_Minh"))
+            ngay_hen = now_vn.date()
+            gio_hien_tai = now_vn.time().replace(tzinfo=None)
             print(f"[DEBUG] Giờ hiện tại: {gio_hien_tai}")
 
             # Lấy nv_ma từ phiếu hẹn (ưu tiên lấy từ phiếu hẹn)
@@ -589,6 +591,7 @@ class PhieuKhamService:
             schedules = self.lich_lam_viec_service.get_by_doctor_and_date(
                 nv_ma_hen, ngay_hen
             )
+            
             print(
                 f"[DEBUG] Số ca làm việc của bác sĩ {nv_ma_hen} ngày {ngay_hen}: {len(schedules)}"
             )
