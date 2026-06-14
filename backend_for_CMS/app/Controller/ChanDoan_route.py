@@ -362,15 +362,8 @@ def predict_disease():
             return error_response(
                 "Thiếu hoặc sai định dạng trường 'symptoms' (phải là list)", 400
             )
-        # Đường dẫn đến thư mục chứa file assits
-        assits_folder = "../assits"
-        if assits_folder is None:
-            print("Warning: 'assits_folder' is not set. Please provide the correct path to the assits folder.")
-
         # Gọi hàm dự đoán (pipeline mới, dùng file trong assits)
-        results = chandoan_service.diagnose_disease(
-            symptoms, top_k=5, assits_folder=assits_folder
-        )
+        results = chandoan_service.diagnose_disease(symptoms, top_k=5)
         # Lấy thông tin chi tiết bệnh cho từng disease_code
         detailed_results = []
         for code, sim in results: 
