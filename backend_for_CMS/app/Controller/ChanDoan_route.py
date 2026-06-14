@@ -373,7 +373,7 @@ def predict_disease():
         )
         # Lấy thông tin chi tiết bệnh cho từng disease_code
         detailed_results = []
-        for code, sim in results:
+        for code, sim in results: 
             benh_info = benh_service.get_by_id(code)
             detailed_results.append(
                 {

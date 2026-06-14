@@ -42,7 +42,7 @@ class ChanDoanService:
         self,
         symptoms_input,
         top_k=5,
-        assits_folder="d:/CTU/Nien luan nganh/Clinic_Management_System/backend_for_CMS/app/assits",
+        assits_folder="../assits",
     ):
         """
         symptoms_input: list các triệu chứng (có thể tiếng Việt hoặc tiếng Anh)
