@@ -5,8 +5,8 @@ import numpy as np
 import joblib
 from sklearn.metrics.pairwise import cosine_similarity
 import json
+import os
 import pandas as pd
-from pathlib import Path
 
 
 class ChanDoanService:
@@ -42,7 +42,7 @@ class ChanDoanService:
         self,
         symptoms_input,
         top_k=5,
-        assits_folder=None,
+        assits_folder="../assits",
     ):
         """
         symptoms_input: list các triệu chứng (có thể tiếng Việt hoặc tiếng Anh)
@@ -50,19 +50,14 @@ class ChanDoanService:
         """
 
         # Đường dẫn các file
-        service_dir = Path(__file__).resolve().parent
-        assits_dir = (
-            Path(assits_folder) if assits_folder else service_dir.parent / "assits"
+        tfidf_path = os.path.join(assits_folder, "tfidf_transformer_full.pkl")
+        X_tfidf_path = os.path.join(assits_folder, "X_tfidf_full.npy")
+        feature_columns_path = os.path.join(
+            assits_folder, "feature_matrix_full_columns.json"
         )
-        if not assits_dir.is_absolute():
-            assits_dir = (service_dir / assits_dir).resolve()
-
-        tfidf_path = assits_dir / "tfidf_transformer_full.pkl"
-        X_tfidf_path = assits_dir / "X_tfidf_full.npy"
-        feature_columns_path = assits_dir / "feature_matrix_full_columns.json"
-        disease_weights_path = assits_dir / "disease_weights_full.json"
-        mapping_path = assits_dir / "symptom_mapping.json"
-        feature_matrix_csv = assits_dir / "feature_matrix_full.csv"
+        disease_weights_path = os.path.join(assits_folder, "disease_weights_full.json")
+        mapping_path = os.path.join(assits_folder, "symptom_mapping.json")
+        feature_matrix_csv = os.path.join(assits_folder, "feature_matrix_full.csv")
 
         # Load các file đã lưu
         tfidf = joblib.load(tfidf_path)
