@@ -1,8 +1,13 @@
 import os
 from datetime import timedelta
+
 from dotenv import load_dotenv
 
-load_dotenv()  # Tải biến môi trường từ file .env nếu có
+load_dotenv()
+
+BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+APP_DIR = os.path.join(BACKEND_DIR, "app")
+DEFAULT_ASSITS_DIR = os.path.join(APP_DIR, "assits")
 
 
 def _build_database_uri() -> str:
@@ -28,10 +33,15 @@ def _build_database_uri() -> str:
 
 
 class Config:
+    BACKEND_DIR = BACKEND_DIR
+    APP_DIR = APP_DIR
+    ASSITS_DIR = os.getenv("ASSITS_DIR", DEFAULT_ASSITS_DIR)
     SQLALCHEMY_DATABASE_URI = _build_database_uri()
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = os.getenv("SECRET_KEY", "f7lL5JcQoNZaEOUrMKWfRMkgFtMBMpOJHtwp4Ap08iQ")
+    SECRET_KEY = os.getenv(
+        "SECRET_KEY", "f7lL5JcQoNZaEOUrMKWfRMkgFtMBMpOJHtwp4Ap08iQ"
+    )
     JWT_SECRET_KEY = os.getenv(
         "JWT_SECRET_KEY", "f7lL5JcQoNZaEOUrMKWfRMkgFtMBMpOJHtwp4Ap08iQ"
-    )  # Dùng giá trị tĩnh từ .env
+    )
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=2)

@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from app.Services.ChanDoan_service import ChanDoanService
 from app.Services.Benh_service import BenhService
+from app.config import Config
 from app.extensions import db
 from app.utils.response_utils import success_response, error_response
 from datetime import datetime
@@ -364,12 +365,8 @@ def predict_disease():
             )
         # Gọi hàm dự đoán (pipeline mới, dùng file trong assits)
         # Đường dẫn đến thư mục chứa file assits
-        assits_folder = "../assits"
-        if assits_folder is None:
-            print("Warning: 'assits_folder' is not set. Please provide the correct path to the assits folder.")
-
         results = chandoan_service.diagnose_disease(
-            symptoms, top_k=5, assits_folder=assits_folder
+            symptoms, top_k=5, assits_folder=Config.ASSITS_DIR
         )
         # Lấy thông tin chi tiết bệnh cho từng disease_code
         detailed_results = []

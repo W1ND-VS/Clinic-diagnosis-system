@@ -1,8 +1,8 @@
 import axios from "axios";
+import { API_BASE_URL } from "../config/api";
 
-// Tạo một instance axios riêng cho việc đăng nhập không có interceptor 401
 const authApi = axios.create({
-  baseURL: "https://clinic-diagnosis-system-production.up.railway.app/api",
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },

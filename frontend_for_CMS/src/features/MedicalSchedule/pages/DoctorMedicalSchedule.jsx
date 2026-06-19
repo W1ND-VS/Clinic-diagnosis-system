@@ -10,6 +10,7 @@ import PageHeader from '../../../layouts/PageHeader';
 import { useNavigate } from 'react-router-dom';
 import ConfirmationDialogModal from '../../../components/ConfirmationDialogModal';
 import { jwtDecode } from "jwt-decode";
+import { API_BASE_URL } from '../../../config/api';
 
 const DoctorMedicalSchedule = () => {
     // States không thay đổi
@@ -406,7 +407,7 @@ const DoctorMedicalSchedule = () => {
 
                                                     {record.status === 'completed' && (
                                                         <button
-                                                            onClick={() => window.open(`https://clinic-diagnosis-system-production.up.railway.app/api/phieukham/print/${record.pk_ma}`, '_blank')}
+                                                            onClick={() => window.open(`${API_BASE_URL}/phieukham/print/${record.pk_ma}`, '_blank')}
                                                             className="text-dark-textSecondary hover:text-dark-text"
                                                             title="In phiếu khám"
                                                         >

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Modal from "./ModalAddPatient";
-import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-const API_BASE_URL = "https://clinic-diagnosis-system-production.up.railway.app/api";
+import api from "../service/apiService";
 
 const BookAppointmentModal = ({ isOpen, onClose, onSubmit, selectedTimeSlot }) => {
     const [medicalForm, setMedicalForm] = useState({
@@ -35,16 +33,15 @@ const BookAppointmentModal = ({ isOpen, onClose, onSubmit, selectedTimeSlot }) =
 
         const fetchData = async () => {
             try {
-                const token = localStorage.getItem("access_token");
                 // Fetch patients data
-                const patientsRes = await axios.get(`${API_BASE_URL}/benhnhan/getall`);
+                const patientsRes = await api.get("/benhnhan/getall");
                 setAllPatients(patientsRes.data.data || []);
                 console.log("All patients:", patientsRes.data.data);
                 // Fetch doctors data
-                const doctorsRes = await axios.get(`${API_BASE_URL}/bacsi/getall`);
+                const doctorsRes = await api.get("/bacsi/getall");
 
                 // Fetch symptoms data
-                const symptomsRes = await axios.get(`${API_BASE_URL}/trieuchung/getall`);
+                const symptomsRes = await api.get("/trieuchung/getall");
                 // Kiểm tra xem dữ liệu có tồn tại không
                 if (!patientsRes.data) {
                     throw new Error("Dữ liệu không hợp lệ");
@@ -158,10 +155,7 @@ const BookAppointmentModal = ({ isOpen, onClose, onSubmit, selectedTimeSlot }) =
     const handleAddPatient = async (newPatient) => {
         console.log("New patient data:", newPatient);
         try {
-            const response = await axios.post(
-                `${API_BASE_URL}/benhnhan/create`,
-                newPatient
-            );
+            const response = await api.post("/benhnhan/create", newPatient);
             // Log the new patient data for debugging
 
             setAllPatients([...allPatients, response.data.data]);
