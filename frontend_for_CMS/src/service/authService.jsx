@@ -7,6 +7,8 @@ export const login = async (username, password) => {
             nv_ma: username,
             nv_password: password,
         });
+        console.log(api.defaults.baseURL);
+        console.log("Response from login API:", response.data);
         if (response.data && response.data.success && response.data.data?.access_token) {
             localStorage.setItem("access_token", response.data.data.access_token);
 
