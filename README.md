@@ -149,7 +149,6 @@ SECRET_KEY=change-me
 JWT_SECRET_KEY=change-me
 DATABASE_URL=mysql+pymysql://root:@localhost:3307/db_clinic
 ASSITS_DIR=app/assits
-CORS_ORIGINS=http://localhost:5173,https://clinic-diagnosis-system.vercel.app
 ```
 
 ### 2. Frontend
@@ -175,10 +174,6 @@ If you want a different API URL on your machine, create `frontend_for_CMS/.env.l
 ```env
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
-
-`VITE_API_BASE_URL` can be either the backend root URL such as `https://your-backend.onrender.com`
-or the full API URL such as `https://your-backend.onrender.com/api`. The frontend now normalizes
-it to `/api` automatically.
 
 ## Basic Usage Flow
 
