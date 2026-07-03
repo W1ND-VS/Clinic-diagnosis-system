@@ -69,6 +69,7 @@ const RegisterForm = () => {
                         <input
                             type="text"
                             name="bn_hoten"
+                            autoComplete="name"
                             value={form.bn_hoten}
                             onChange={handleChange}
                             required
@@ -80,6 +81,7 @@ const RegisterForm = () => {
                         <input
                             type="text"
                             name="bn_sdt"
+                            autoComplete="tel"
                             value={form.bn_sdt}
                             onChange={handleChange}
                             required
@@ -91,6 +93,7 @@ const RegisterForm = () => {
                         <input
                             type="date"
                             name="bn_ngaysinh"
+                            autoComplete="bday"
                             value={form.bn_ngaysinh}
                             onChange={handleChange}
                             required
@@ -127,6 +130,7 @@ const RegisterForm = () => {
                         <input
                             type="password"
                             name="password"
+                            autoComplete="new-password"
                             value={form.password}
                             onChange={handleChange}
                             required
@@ -138,6 +142,7 @@ const RegisterForm = () => {
                         <input
                             type="password"
                             name="confirmPassword"
+                            autoComplete="new-password"
                             value={form.confirmPassword}
                             onChange={handleChange}
                             required

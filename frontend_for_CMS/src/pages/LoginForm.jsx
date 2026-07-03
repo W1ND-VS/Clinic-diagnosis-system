@@ -155,6 +155,7 @@ const LoginForm = ({ setToken = () => { } }) => {
                                 type="text"
                                 id="username"
                                 name="username"
+                                autoComplete="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 placeholder="Nhập tên đăng nhập hoặc SĐT"
@@ -174,6 +175,7 @@ const LoginForm = ({ setToken = () => { } }) => {
                                 type="password"
                                 id="password"
                                 name="password"
+                                autoComplete="current-password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Nhập mật khẩu"
