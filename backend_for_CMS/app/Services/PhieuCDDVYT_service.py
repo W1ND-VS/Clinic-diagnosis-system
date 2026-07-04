@@ -4,7 +4,6 @@ from sqlalchemy import func
 from sqlalchemy.exc import SQLAlchemyError
 from datetime import date, datetime
 from app.Model import PhieuCDDVYT, DichVuYTe, PhieuKham, KetQua, ChiSo, NgayApDung
-from tkinter.tix import MAX
 
 
 class PhieuCDDVYTService:
