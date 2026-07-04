@@ -299,8 +299,13 @@ def test_prescription(tt_matthuoc):
     except Exception as e:
         import traceback
 
+        error_payload = {"error": str(e), "traceback": traceback.format_exc()}
+        if Config.DIAGNOSIS_PATH_DEBUG:
+            error_payload["diagnosis_debug"] = (
+                chandoan_service.get_last_diagnosis_debug()
+            )
         return error_response(
-            {"error": str(e), "traceback": traceback.format_exc()}, 500
+            error_payload, 500
         )
 
 
@@ -384,6 +389,11 @@ def predict_disease():
     except Exception as e:
         import traceback
 
+        error_payload = {"error": str(e), "traceback": traceback.format_exc()}
+        if Config.DIAGNOSIS_PATH_DEBUG:
+            error_payload["diagnosis_debug"] = (
+                chandoan_service.get_last_diagnosis_debug()
+            )
         return error_response(
-            {"error": str(e), "traceback": traceback.format_exc()}, 500
+            error_payload, 500
         )

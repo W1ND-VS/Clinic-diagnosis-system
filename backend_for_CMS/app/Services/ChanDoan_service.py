@@ -21,6 +21,7 @@ class ChanDoanService:
     def __init__(self, db_session):
         self.db_session = db_session
         self.benh_service = BenhService(db_session)
+        self._last_diagnosis_debug = None
 
     def get_chan_doan_by_prescription(self, tt_matthuoc: str) -> List[Benh]:
         """Lay danh sach chan doan theo ma toa thuoc."""
@@ -80,6 +81,16 @@ class ChanDoanService:
             mapping_path,
             feature_matrix_csv,
         ]
+        self._last_diagnosis_debug = {
+            "cwd": os.getcwd(),
+            "raw_assits_folder": raw_assits_folder,
+            "config_assits_dir": Config.ASSITS_DIR,
+            "resolved_assits_folder": assits_folder,
+            "required_paths": [
+                {"path": path, "exists": os.path.exists(path)}
+                for path in required_paths
+            ],
+        }
         if Config.DIAGNOSIS_PATH_DEBUG:
             active_logger = current_app.logger if has_app_context() else logger
             active_logger.warning(
@@ -89,13 +100,12 @@ class ChanDoanService:
                 raw_assits_folder,
                 Config.ASSITS_DIR,
                 assits_folder,
-                [
-                    {"path": path, "exists": os.path.exists(path)}
-                    for path in required_paths
-                ],
+                self._last_diagnosis_debug["required_paths"],
             )
+            print(f"diagnose_disease path debug | {self._last_diagnosis_debug}")
         missing_paths = [path for path in required_paths if not os.path.exists(path)]
         if missing_paths:
+            self._last_diagnosis_debug["missing_paths"] = missing_paths
             if Config.DIAGNOSIS_PATH_DEBUG:
                 active_logger = current_app.logger if has_app_context() else logger
                 active_logger.error(
@@ -103,6 +113,10 @@ class ChanDoanService:
                     "missing_paths=%s",
                     assits_folder,
                     missing_paths,
+                )
+                print(
+                    "diagnose_disease missing assets | "
+                    f"{self._last_diagnosis_debug}"
                 )
             raise FileNotFoundError(
                 "Missing diagnosis assets in "
@@ -148,3 +162,6 @@ class ChanDoanService:
             (disease_labels[idx], float(sims_weighted[idx])) for idx in top_k_idx
         ]
         return results
+
+    def get_last_diagnosis_debug(self):
+        return self._last_diagnosis_debug
