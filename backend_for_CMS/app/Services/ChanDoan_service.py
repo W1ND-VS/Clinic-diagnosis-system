@@ -1,12 +1,10 @@
 import json
-import logging
 import os
 from typing import List
 
 import joblib
 import numpy as np
 import pandas as pd
-from flask import has_app_context, current_app
 from sklearn.metrics.pairwise import cosine_similarity
 
 from app.config import Config, resolve_project_path
@@ -14,14 +12,10 @@ from app.Model import Benh, ChanDoan
 from app.Services.Benh_service import BenhService
 
 
-logger = logging.getLogger(__name__)
-
-
 class ChanDoanService:
     def __init__(self, db_session):
         self.db_session = db_session
         self.benh_service = BenhService(db_session)
-        self._last_diagnosis_debug = None
 
     def get_chan_doan_by_prescription(self, tt_matthuoc: str) -> List[Benh]:
         """Lay danh sach chan doan theo ma toa thuoc."""
@@ -58,11 +52,11 @@ class ChanDoanService:
         Tra ve top_k ma benh du doan va do tuong tu.
         """
 
-        raw_assits_folder = assits_folder or Config.ASSITS_DIR
         assits_folder = resolve_project_path(
-            raw_assits_folder,
+            assits_folder or Config.ASSITS_DIR,
             default_base_dir=Config.BACKEND_DIR,
         )
+        print(f"Using diagnosis assets from: {assits_folder}")
 
         tfidf_path = os.path.join(assits_folder, "tfidf_transformer_full.pkl")
         X_tfidf_path = os.path.join(assits_folder, "X_tfidf_full.npy")
@@ -81,43 +75,8 @@ class ChanDoanService:
             mapping_path,
             feature_matrix_csv,
         ]
-        self._last_diagnosis_debug = {
-            "cwd": os.getcwd(),
-            "raw_assits_folder": raw_assits_folder,
-            "config_assits_dir": Config.ASSITS_DIR,
-            "resolved_assits_folder": assits_folder,
-            "required_paths": [
-                {"path": path, "exists": os.path.exists(path)}
-                for path in required_paths
-            ],
-        }
-        if Config.DIAGNOSIS_PATH_DEBUG:
-            active_logger = current_app.logger if has_app_context() else logger
-            active_logger.warning(
-                "diagnose_disease path debug | cwd=%s | raw_assits_folder=%s | "
-                "config_assits_dir=%s | resolved_assits_folder=%s | required_paths=%s",
-                os.getcwd(),
-                raw_assits_folder,
-                Config.ASSITS_DIR,
-                assits_folder,
-                self._last_diagnosis_debug["required_paths"],
-            )
-            print(f"diagnose_disease path debug | {self._last_diagnosis_debug}")
         missing_paths = [path for path in required_paths if not os.path.exists(path)]
         if missing_paths:
-            self._last_diagnosis_debug["missing_paths"] = missing_paths
-            if Config.DIAGNOSIS_PATH_DEBUG:
-                active_logger = current_app.logger if has_app_context() else logger
-                active_logger.error(
-                    "diagnose_disease missing assets | resolved_assits_folder=%s | "
-                    "missing_paths=%s",
-                    assits_folder,
-                    missing_paths,
-                )
-                print(
-                    "diagnose_disease missing assets | "
-                    f"{self._last_diagnosis_debug}"
-                )
             raise FileNotFoundError(
                 "Missing diagnosis assets in "
                 f"{assits_folder}: {', '.join(missing_paths)}"
@@ -162,6 +121,3 @@ class ChanDoanService:
             (disease_labels[idx], float(sims_weighted[idx])) for idx in top_k_idx
         ]
         return results
-
-    def get_last_diagnosis_debug(self):
-        return self._last_diagnosis_debug
