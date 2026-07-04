@@ -10,6 +10,26 @@ APP_DIR = os.path.join(BACKEND_DIR, "app")
 DEFAULT_ASSITS_DIR = os.path.join(APP_DIR, "assits")
 
 
+def resolve_project_path(path_value: str, default_base_dir: str = BACKEND_DIR) -> str:
+    """Resolve relative paths against stable project directories instead of cwd."""
+    if not path_value:
+        return path_value
+
+    if os.path.isabs(path_value):
+        return os.path.normpath(path_value)
+
+    candidates = [
+        os.path.normpath(os.path.join(default_base_dir, path_value)),
+        os.path.normpath(os.path.join(APP_DIR, path_value)),
+    ]
+
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+
+    return candidates[0]
+
+
 def _build_database_uri() -> str:
     database_url = os.getenv("DATABASE_URL") or os.getenv("DATABASE_URI")
     if database_url:
@@ -35,7 +55,10 @@ def _build_database_uri() -> str:
 class Config:
     BACKEND_DIR = BACKEND_DIR
     APP_DIR = APP_DIR
-    ASSITS_DIR = os.getenv("ASSITS_DIR", DEFAULT_ASSITS_DIR)
+    ASSITS_DIR = resolve_project_path(
+        os.getenv("ASSITS_DIR", DEFAULT_ASSITS_DIR),
+        default_base_dir=BACKEND_DIR,
+    )
     SQLALCHEMY_DATABASE_URI = _build_database_uri()
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.getenv(

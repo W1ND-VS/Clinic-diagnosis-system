@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
-from app.config import Config
+from app.config import Config, resolve_project_path
 from app.Model import Benh, ChanDoan
 from app.Services.Benh_service import BenhService
 
@@ -52,7 +52,10 @@ class ChanDoanService:
         Tra ve top_k ma benh du doan va do tuong tu.
         """
 
-        assits_folder = os.path.abspath(assits_folder or Config.ASSITS_DIR)
+        assits_folder = resolve_project_path(
+            assits_folder or Config.ASSITS_DIR,
+            default_base_dir=Config.BACKEND_DIR,
+        )
 
         tfidf_path = os.path.join(assits_folder, "tfidf_transformer_full.pkl")
         X_tfidf_path = os.path.join(assits_folder, "X_tfidf_full.npy")
