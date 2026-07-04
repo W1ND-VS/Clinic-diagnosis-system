@@ -59,7 +59,9 @@ class ChanDoanService:
         print(f"Using diagnosis assets from: {assits_folder}")
 
         tfidf_path = os.path.join(assits_folder, "tfidf_transformer_full.pkl")
+        print(f"TF-IDF model path: {tfidf_path}")
         X_tfidf_path = os.path.join(assits_folder, "X_tfidf_full.npy")
+        print(f"TF-IDF feature matrix path: {X_tfidf_path}")
         feature_columns_path = os.path.join(
             assits_folder, "feature_matrix_full_columns.json"
         )
