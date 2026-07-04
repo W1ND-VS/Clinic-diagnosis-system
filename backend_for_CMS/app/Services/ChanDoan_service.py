@@ -79,6 +79,7 @@ class ChanDoanService:
         ]
         missing_paths = [path for path in required_paths if not os.path.exists(path)]
         if missing_paths:
+            print(f"⚠️ Missing required diagnosis assets: {', '.join(missing_paths)}")
             raise FileNotFoundError(
                 "Missing diagnosis assets in "
                 f"{assits_folder}: {', '.join(missing_paths)}"
