@@ -153,28 +153,7 @@ class ChanDoanService:
         ]
         return results
 
-        print(f"Using diagnosis assets from: {assits_folder}")
-
-        tfidf_path = os.path.join(assits_folder, "tfidf_transformer_full.pkl")
-        print(f"TF-IDF model path: {tfidf_path}")
-        X_tfidf_path = os.path.join(assits_folder, "X_tfidf_full.npy")
-        print(f"TF-IDF feature matrix path: {X_tfidf_path}")
-        feature_columns_path = os.path.join(
-            assits_folder, "feature_matrix_full_columns.json"
-        )
-        disease_weights_path = os.path.join(assits_folder, "disease_weights_full.json")
-        mapping_path = os.path.join(assits_folder, "symptom_mapping.json")
-        feature_matrix_csv = os.path.join(assits_folder, "feature_matrix_full.csv")
-
-        required_paths = [
-            tfidf_path,
-            X_tfidf_path,
-            feature_columns_path,
-            disease_weights_path,
-            mapping_path,
-            feature_matrix_csv,
-        ]
-        missing_paths = [path for path in required_paths if not os.path.exists(path)]
+        """
         if missing_paths:
             print(f"⚠️ Missing required diagnosis assets: {', '.join(missing_paths)}")
             raise FileNotFoundError(
@@ -221,3 +200,4 @@ class ChanDoanService:
             (disease_labels[idx], float(sims_weighted[idx])) for idx in top_k_idx
         ]
         return results
+        """
